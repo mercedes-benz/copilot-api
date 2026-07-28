@@ -17,7 +17,11 @@ export const getCopilotToken = async () => {
 
 // Trimmed for the sake of simplicity
 interface GetCopilotTokenResponse {
+  endpoints?: {
+    api?: string
+  }
   expires_at: number
   refresh_in: number
+  sku?: string
   token: string
 }
