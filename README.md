@@ -1,4 +1,4 @@
-# @mb-home/copilot-api
+# @mercedes-benz/copilot-api
 
 A reverse-engineered proxy for the GitHub Copilot API that exposes it as an OpenAI and Anthropic compatible service. Use GitHub Copilot with any tool that supports the OpenAI Chat Completions API or the Anthropic Messages API, including [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview).
 
@@ -9,7 +9,7 @@ A reverse-engineered proxy for the GitHub Copilot API that exposes it as an Open
 Add the following to your `~/.npmrc`:
 
 ```
-@mb-home:registry=https://npm.mercedes-benz.ghe.com/
+@mercedes-benz:registry=https://npm.mercedes-benz.ghe.com/
 //npm.mercedes-benz.ghe.com/:_authToken=<YOUR_GHE_PAT>
 ```
 
@@ -18,13 +18,13 @@ Your PAT needs `read:packages` scope. Generate one at https://mercedes-benz.ghe.
 ## Usage
 
 ```sh
-npx @mb-home/copilot-api start
+npx @mercedes-benz/copilot-api start
 ```
 
 ### With Claude Code
 
 ```sh
-npx @mb-home/copilot-api start --claude-code
+npx @mercedes-benz/copilot-api start --claude-code
 ```
 
 Or configure manually in `.claude/settings.json`:
@@ -68,9 +68,9 @@ The proxy exposes these endpoints:
 ### Common Options
 
 ```sh
-npx @mb-home/copilot-api start --port 8080              # Custom port (default: 4141)
-npx @mb-home/copilot-api start --account-type business  # For business/enterprise plans
-npx @mb-home/copilot-api start --rate-limit 30 --wait   # Rate limiting
+npx @mercedes-benz/copilot-api start --port 8080              # Custom port (default: 4141)
+npx @mercedes-benz/copilot-api start --account-type business  # For business/enterprise plans
+npx @mercedes-benz/copilot-api start --rate-limit 30 --wait   # Rate limiting
 ```
 
 ## Authentication
