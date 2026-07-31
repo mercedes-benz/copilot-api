@@ -9,11 +9,8 @@ A reverse-engineered proxy for the GitHub Copilot API that exposes it as an Open
 Add the following to your `~/.npmrc`:
 
 ```
-@mercedes-benz:registry=https://npm.mercedes-benz.ghe.com/
-//npm.mercedes-benz.ghe.com/:_authToken=<YOUR_GHE_PAT>
+@mercedes-benz:registry=https://npm.pkg.github.com
 ```
-
-Your PAT needs `read:packages` scope. Generate one at https://mercedes-benz.ghe.com/settings/tokens.
 
 ## Usage
 
@@ -36,8 +33,8 @@ Or configure manually in `.claude/settings.json`:
     "ANTHROPIC_AUTH_TOKEN": "dummy",
     "ANTHROPIC_MODEL": "claude-opus-4.7",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-5",
-    "ANTHROPIC_SMALL_FAST_MODEL": "gemini-3.6-flash",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "gemini-3.6-flash",
+    "ANTHROPIC_SMALL_FAST_MODEL": "claude-sonnet-5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-sonnet-5",
     "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
   },
