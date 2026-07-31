@@ -77,9 +77,9 @@ Add this to your `.claude/settings.json` (create the file if it doesn't exist):
     "ANTHROPIC_BASE_URL": "http://localhost:4141",
     "ANTHROPIC_AUTH_TOKEN": "dummy",
     "ANTHROPIC_MODEL": "claude-opus-4.7",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-5",
-    "ANTHROPIC_SMALL_FAST_MODEL": "claude-sonnet-5",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-sonnet-5",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4.6",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4.7",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-haiku-4.5",
     "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
   },
