@@ -15,9 +15,38 @@ const readGithubToken = () => fs.readFile(PATHS.GITHUB_TOKEN_PATH, "utf8")
 const writeGithubToken = (token: string) =>
   fs.writeFile(PATHS.GITHUB_TOKEN_PATH, token)
 
+export const getAccountTypeFromCopilotToken = (
+  token: string,
+): "individual" | "business" | "enterprise" => {
+  const tokenPayload = token.split(":", 1)[0]
+  const sku = tokenPayload
+    .split(";")
+    .find((part) => part.startsWith("sku="))
+    ?.slice(4)
+    .toLowerCase()
+
+  if (!sku) return "individual"
+  if (sku.includes("enterprise")) return "enterprise"
+  if (sku.includes("business")) return "business"
+
+  return "individual"
+}
+
 export const setupCopilotToken = async () => {
-  const { token, refresh_in } = await getCopilotToken()
+  const { token, refresh_in, endpoints } = await getCopilotToken()
   state.copilotToken = token
+  state.copilotApiBaseUrl = endpoints?.api
+
+  if (state.accountType === "individual") {
+    const detectedAccountType = getAccountTypeFromCopilotToken(token)
+
+    if (detectedAccountType !== "individual") {
+      state.accountType = detectedAccountType
+      consola.info(
+        `Detected ${detectedAccountType} Copilot plan from token; using ${detectedAccountType} API host`,
+      )
+    }
+  }
 
   // Display the Copilot token to the screen
   consola.debug("GitHub Copilot Token fetched successfully!")
@@ -29,8 +58,9 @@ export const setupCopilotToken = async () => {
   setInterval(async () => {
     consola.debug("Refreshing Copilot token")
     try {
-      const { token } = await getCopilotToken()
+      const { token, endpoints } = await getCopilotToken()
       state.copilotToken = token
+      state.copilotApiBaseUrl = endpoints?.api
       consola.debug("Copilot token refreshed")
       if (state.showToken) {
         consola.info("Refreshed Copilot token:", token)
