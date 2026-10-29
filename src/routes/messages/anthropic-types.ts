@@ -78,7 +78,10 @@ export interface AnthropicAssistantMessage {
   content: string | Array<AnthropicAssistantContentBlock>
 }
 
-export type AnthropicMessage = AnthropicUserMessage | AnthropicAssistantMessage
+export type AnthropicMessage =
+  | AnthropicUserMessage
+  | AnthropicAssistantMessage
+  | { role: "system"; content: string | Array<AnthropicTextBlock> }
 
 export interface AnthropicTool {
   name: string
